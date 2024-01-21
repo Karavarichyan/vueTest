@@ -6,11 +6,18 @@ export default {
   ],
   theme: {
     extend: {
-      // fontFamily: {
-      //   sans: "'Roboto', sans-serif;",
-      //   monseerat: 'monseerat'
-      // }
+      fontFamily: {
+        sans: "'Roboto', sans-serif;",
+        monseerat: 'monseerat'
+      }
     },
   },
   plugins: [],
+
+    colors: {
+      // Configure your color palette here
+      blue: '#1e3a8a'
+    }
+  
 }
+

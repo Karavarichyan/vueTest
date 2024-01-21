@@ -1,7 +1,9 @@
 <template>
     <!-- Coming Soon -->
-    <RouterView />
-    <div class="min-h-screen flex flex-col items-center justify-center">
+    <div class=" w-full min-h-screen flex flex-wrap  ">
+
+    
+    <div class="min-h-screen   flex grow flex-col items-center justify-center">
       
       <img class="max-sm w-800 h-900" src="@/assets/welcome.png" alt="" />
       
@@ -24,5 +26,6 @@
       </button>
       
     </div>
+  </div>
   </template>
   
