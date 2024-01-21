@@ -99,8 +99,8 @@ function checkOTP() {
 
   if (flag) {
     const enteredOTP = otpArray.value.join('')
-    console.log('Entered OTP:', enteredOTP)
     otpEmit('entered', enteredOTP)
+    console.log('Entered OTP:', enteredOTP)
   }
 }
 
