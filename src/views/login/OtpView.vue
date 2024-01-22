@@ -96,10 +96,14 @@ function checkOTP() {
       children[i].classList.remove('border-red-500')
     }
   }
-
+   const num = 111111
   if (flag) {
     const enteredOTP = otpArray.value.join('')
     otpEmit('entered', enteredOTP)
+    if (enteredOTP != num) {
+      children[i].classList.remove('border-red-500')
+      
+    }
     console.log('Entered OTP:', enteredOTP)
   }
 }

@@ -10,7 +10,7 @@
     <BaseButton
       :processing="false"
       @click="sendCode"
-      :disabled="!IstValidation"
+      :disabled="!email"
       class="h-[40px] my-4 rounded-lg min-w-44 bg-blue-900 items-center text-white ml-[160px] font-roboto"
       >SEND CODE</BaseButton
     >
@@ -23,6 +23,7 @@ import BaseButton from '@/components/BaseButton.vue'
 import BaseInput from '@/components/BaseInput.vue'
 import { ref ,computed} from 'vue'
 import { useRouter } from 'vue-router'
+import 
 const router = useRouter()
 
 const sendCode = () => {
