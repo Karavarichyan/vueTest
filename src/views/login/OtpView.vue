@@ -12,10 +12,10 @@
         v-model="otpArray[n - 1]"
         type="text"
         maxlength="1"
-        class="border rounded-md w-10 p-2 ml-3 text-center"
+        class="border-b-4 w-10 p-2 ml-3 text-center outline-0"
       />
       <button @click="clearFields" class="pb-6 py-1 text-slate-400 rounded-md">
-        <img class="max-w-5" src="@/assets/icinx.png" alt="">
+        <img class="max-w-5 pt-4" src="@/assets/icinx.png" alt="">
       </button>
     </div>
 
@@ -87,10 +87,10 @@ function clearFields() {
 function checkOTP() {
   const children = container.value.children
   let flag = true
-
-  for (let i = 0; i < otpProps.length - 1; i++) {
+// lenght-1 er 
+  for (let i = 0; i < otpProps.length ; i++) {
     if (otpArray.value[i] == null) {
-      children[i].classList.add('border-red-500')
+      children[i].classList.add('border-blue-800')
       flag = false
     } else {
       children[i].classList.remove('border-red-500')

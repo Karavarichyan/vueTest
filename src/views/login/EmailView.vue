@@ -10,8 +10,8 @@
     <BaseButton
       :processing="false"
       @click="sendCode"
-      :disabled="!email"
-      class="h-[40px] my-4 rounded-lg min-w-44 bg-blue-900 items-center text-white ml-[200px] font-roboto"
+      :disabled="!IstValidation"
+      class="h-[40px] my-4 rounded-lg min-w-44 bg-blue-900 items-center text-white ml-[160px] font-roboto"
       >SEND CODE</BaseButton
     >
     <!-- <p>{{x}}</p> -->
@@ -21,7 +21,7 @@
 <script setup>
 import BaseButton from '@/components/BaseButton.vue'
 import BaseInput from '@/components/BaseInput.vue'
-import { ref } from 'vue'
+import { ref ,computed} from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
@@ -29,9 +29,13 @@ const sendCode = () => {
   if (!email.value.length) return
   // sendCode:{ path: '/:otp' },
   console.log('Entered email:', email.value)
-  startValidation.value = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.value)
+  // startValidation.value = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.value)
   router.push({ path: '/Otp', replace: true })
 }
+const IstValidation =  computed (() => {
+  if (startValidation.value){
+  return startValidation.value ? /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.value): null;}
+});
 
 const startValidation = ref(false)
 const email = ref('')
