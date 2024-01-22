@@ -1,5 +1,5 @@
 <template>
-  <button class="rounded-lg min-w-44 bg-blue-900">
+  <button class="">
     <span v-if="processing" >Loading...</span>
     <slot />
   </button>

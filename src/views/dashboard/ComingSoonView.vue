@@ -17,7 +17,7 @@
       :processing="false"
       @click="sendCode"
       :disabled="IstValidation"
-      class="max-2-72 max-h-8 bg-cyan-950 px-5 text-center text-white"
+      class="max-2-72 max-h-8 bg-blue-900 px-5 text-center text-white"
       >Edit my profile and my worklog</BaseButton>
       <BaseButton
       :processing="false"

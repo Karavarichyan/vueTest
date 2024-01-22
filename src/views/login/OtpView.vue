@@ -23,7 +23,8 @@
       :processing="false"
       @click="sendCode"
       :disabled="!otpProps"
-      class="h-[40px] my-4 rounded-lg min-w-20 bg-blue-900 items-center text-white ml-[250px] font-serif:roboto"
+      class="h-[40px] my-4  items-center
+      rounded-lg min-w-44 bg-blue-900 text-white ml-[250px] font-serif:roboto"
     >SUBMIT</BaseButton>
 
     <div class="text-slate-400 mt-3 pb-4 text-xs">
