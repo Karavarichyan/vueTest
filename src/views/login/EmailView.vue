@@ -3,6 +3,9 @@
     <label for="fname" class="text-xl leading-8 font-medium text-indigo-800 w-350 h-370; py-8"
       >Login</label
     ><br />
+
+    
+
     <BaseInput @set-value="setValue" type="email" class="number-class" />
     <!-- <p>{{ email }}</p> -->
 
@@ -35,6 +38,7 @@ const sendCode = () => {
 const IstValidation =  computed (() => {
   if (startValidation.value){
   return startValidation.value ? /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.value): null;}
+    // console.log('ssasdasdasd')
 });
 
 const startValidation = ref(false)

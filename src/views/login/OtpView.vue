@@ -36,6 +36,20 @@
 <script setup>
 import BaseButton from '@/components/BaseButton.vue'
 import { ref, defineProps, defineEmits } from 'vue'
+import axios from 'axios'
+ 
+
+axios({
+  method: 'post',
+  url: 'https://azapp-playground-demo-api.azurewebsites.net',
+  data: {
+    
+  "email": "demo@demo.com",
+  "code": "111111",
+  "languageID": "1"
+
+  }
+})
 
 const otpProps = defineProps({
   length: {
@@ -70,7 +84,7 @@ function handleEnter(e, i) {
     if (!matched) {
       otpArray.value[i] = null
       return
-    } else if (i < otpProps.length - 1) {
+    } else if (i < otpProps.length) {
       setTimeout(() => {
         children[i + 1].focus()
       }, 100)

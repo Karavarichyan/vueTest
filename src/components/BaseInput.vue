@@ -3,7 +3,7 @@ import Input from 'postcss/lib/input';
   <div class="outline-0 max-w-sm my-6 border-b-2 border-color: rgb(203 213 225); w-full">
     <label v-if="label">{{ label }}</label>
     <input
-      class="outline-0"
+      class="outline-0 w-full" 
       :type="type"
       @input="inputChange($event)"
       :placeholder="placeholder"
