@@ -31,25 +31,16 @@
       If you do not receive the confirmation message within a few minutes, please check your Spam or Bulk Email folder
     </div>
   </div>
+  <div class="card text-center m-3">
+    <h5 class="card-header">Simple POST Request</h5>
+    <div class="card-body">New product id: {{product?.id}}</div>
+</div>
 </template>
 
 <script setup>
 import BaseButton from '@/components/BaseButton.vue'
 import { ref, defineProps, defineEmits } from 'vue'
-import axios from 'axios'
- 
-
-axios({
-  method: 'post',
-  url: 'https://azapp-playground-demo-api.azurewebsites.net',
-  data: {
-    
-  "email": "demo@demo.com",
-  "code": "111111",
-  "languageID": "1"
-
-  }
-})
+import axios from 'axios';
 
 const otpProps = defineProps({
   length: {
@@ -107,25 +98,50 @@ function checkOTP() {
     if (otpArray.value[i] == null) {
       children[i].classList.add('border-blue-800')
       flag = false
-    } else {
-      children[i].classList.remove('border-red-500')
-    }
-  }
+    // } else {
+    //   children[i].classList.remove('border-red-500')
+    // }}
+  }}
    const num = 111111
   if (flag) {
     const enteredOTP = otpArray.value.join('')
     otpEmit('entered', enteredOTP)
-    if (enteredOTP != num) {
-      children[i].classList.remove('border-red-500')
+    // if (enteredOTP != num) {
+    //   children[i].classList.remove('border-red-500')
       
-    }
+    // }
     console.log('Entered OTP:', enteredOTP)
   }
 }
-
 function sendCode() {
+
   console.log('Sending code...');
+  // defineProps({
+  // axios: {
+  //   POSTS //azapp-playground-demo-api.azurewebsites.net/
+  //   "email": "string",
+  //   "code": "string",
+  // "languageID": "string"
+  // })  }
+
+  
 }
 
-onMounted()
+const product = ref(null);
+
+// Simple POST request with a JSON body using fetch
+const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: 'Vue 3 POST Request Example' })
+};
+fetch('https://azapp-playground-demo-api.azurewebsites.net', requestOptions)
+
+    .then(response => response.json())
+    .then(data => product.value = data);
+    {
+  // "email": "string",
+  // "code": "string",
+  // "languageID": "string"
+}
 </script>
