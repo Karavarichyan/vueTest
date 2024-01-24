@@ -46,4 +46,22 @@ const email = ref('')
 const setValue = (value) => {
   email.value = value
 }
+
+// const email = ref(null);
+const requestOptions = {
+    method: 'POST',
+    body: JSON.stringify({
+    "email": "demo@demo.com",
+    "code": "111111",
+    "languageID": "1"}),
+    headers: {
+      "accept": "application/json",
+      "Content-Type": "application/json-patch+json",
+    },
+    
+};
+fetch('http://azapp-playground-demo-api.azurewebsites.net/api/Accounts/LoginWithCode', requestOptions)
+    .then(response => response.json())
+    .then(data => email.value = data)
+    .catch(e=> console.log('qwetg24hg34h35h', e.message))
 </script>

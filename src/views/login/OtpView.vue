@@ -130,18 +130,18 @@ function sendCode() {
 const product = ref(null);
 
 // Simple POST request with a JSON body using fetch
-const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: 'Vue 3 POST Request Example' })
-};
-fetch('https://azapp-playground-demo-api.azurewebsites.net', requestOptions)
+// const requestOptions = {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({ name: 'Vue 3 POST Request Example' })
+// };
+// fetch('https://azapp-playground-demo-api.azurewebsites.net', requestOptions)
 
-    .then(response => response.json())
-    .then(data => product.value = data);
-    {
+//     .then(response => response.json())
+//     .then(data => product.value = data);
+//     {
   // "email": "string",
   // "code": "string",
   // "languageID": "string"
-}
+
 </script>
