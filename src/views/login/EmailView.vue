@@ -1,10 +1,10 @@
 <template>
   <div class="w-1/2 ml-28">
-    <label for="fname" class="text-xl leading-8 font-medium text-indigo-800 w-350 h-370; py-8"
+    <label
+      for="fname"
+      class="text-xl leading-8 font-medium text-indigo-800 w-350 h-370; py-8"
       >Login</label
     ><br />
-
-    
 
     <BaseInput @set-value="setValue" type="email" class="number-class" />
     <!-- <p>{{ email }}</p> -->
@@ -22,46 +22,59 @@
   </div>
 </template>
 <script setup>
-import BaseButton from '@/components/BaseButton.vue'
-import BaseInput from '@/components/BaseInput.vue'
-import { ref ,computed} from 'vue'
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import axios from "axios";
+import BaseButton from "@/components/BaseButton.vue";
+import BaseInput from "@/components/BaseInput.vue";
+import { ref, computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const startValidation = ref(false);
+const email = ref("");
+const info = ref([]);
+
+const setValue = (value) => {
+  email.value = value;
+};
 
 const sendCode = () => {
-  if (!email.value.length) return
-  // sendCode:{ path: '/:otp' },
-  console.log('Entered email:', email.value)
-  // startValidation.value = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.value)
-  router.push({ path: '/Otp', replace: true })
-}
-const IstValidation =  computed (() => {
-  if (startValidation.value){
-  return startValidation.value ? /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.value): null;}
-    // console.log('ssasdasdasd')
+  if (!email.value.length) return;
+  router.push({ path: "/Otp", replace: true });
+};
+
+const IstValidation = computed(() => {
+  return startValidation.value
+    ? /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.value)
+    : null;
 });
 
-const startValidation = ref(false)
-const email = ref('')
-const setValue = (value) => {
-  email.value = value
-}
-
-// const email = ref(null);
-const requestOptions = {
-    method: 'POST',
-    body: JSON.stringify({
-    "email": "demo@demo.com",
-    "code": "111111",
-    "languageID": "1"}),
-    headers: {
-      "accept": "application/json",
-      "Content-Type": "application/json-patch+json",
-    },
+// onMounted(async () => {
+//   await axios
+//     .post('https://jsonplaceholder.typicode.com/posts')
+//     .then(response => {
+//       email.value = response.data;
+//     })
+//     .catch(error => {
+//       console.error("erore meseege", error);
+//     });
     
-};
-fetch('http://azapp-playground-demo-api.azurewebsites.net/api/Accounts/LoginWithCode', requestOptions)
-    .then(response => response.json())
-    .then(data => email.value = data)
-    .catch(e=> console.log('qwetg24hg34h35h', e.message))
+// });
+axios({
+  method: 'post',
+  url: 'https://jsonplaceholder.typicode.com/posts',
+  data: {
+    title: 'Article title',
+    body:  'Article body content',
+    userId: 1,
+  }
+})
 </script>
+<!-- <script setup> 
+import { onMounted } from "vue";
+import usePosts from "../../composables/posts";
+ 
+const { posts, getPosts } = usePosts()
+onMounted(() => {
+    getPosts()
+})
+</script> // [tl! add:end] -->
