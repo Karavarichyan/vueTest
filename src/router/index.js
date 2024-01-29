@@ -13,8 +13,16 @@ const router = createRouter({
           component: () => import('@/views/login/EmailView.vue'),
         },
         {
+          path: "new", // route: /
+          component: () => import('@/views/login/NewEmailView.vue'),
+        },
+        {
           path: "otp", // route: /otp
           component: () => import('@/views/login/OtpView.vue'),
+        },
+        {
+          path: "test", // route: /test
+          component: () => import('@/views/login/TestAxios.vue'),
         },
       ],
     },

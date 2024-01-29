@@ -5,6 +5,8 @@
       class="text-xl leading-8 font-medium text-indigo-800 w-350 h-370; py-8"
       >Login</label
     ><br />
+    <p>sfssdfsdf</p>
+          <!-- <div>{{ posts.id }} {{ posts.title }}.</div> -->
 
     <BaseInput @set-value="setValue" type="email" class="number-class" />
     <!-- <p>{{ email }}</p> -->
@@ -19,7 +21,15 @@
     >
     <!-- <p>{{x}}</p> -->
     <!-- <RouterLink to="/otp">About</RouterLink> -->
+      <!-- <h2>{{ posts.id }} {{ posts.title }}.</h2>
+      <p>{{ posts.body }}</p> -->
+      <!-- //axios testtt -->
+      <!-- <div v-for="post in posts" :key="post.id">
+        <h2>{{ post.id }} {{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+      </div> -->
   </div>
+
 </template>
 <script setup>
 import axios from "axios";
@@ -48,26 +58,43 @@ const IstValidation = computed(() => {
     : null;
 });
 
-// onMounted(async () => {
-//   await axios
-//     .post('https://jsonplaceholder.typicode.com/posts')
-//     .then(response => {
-//       email.value = response.data;
-//     })
-//     .catch(error => {
-//       console.error("erore meseege", error);
-//     });
-    
-// });
-axios({
-  method: 'post',
-  url: 'https://jsonplaceholder.typicode.com/posts',
-  data: {
-    title: 'Article title',
-    body:  'Article body content',
-    userId: 1,
-  }
-})
+onMounted(async () => {
+  await axios
+    .post('https://jsonplaceholder.typicode.com/posts')
+    .then(response => {
+      email.value = response.data;
+    })
+    .catch(error => {
+      console.error("erore no user", error);
+    });
+    console.log(email.value);
+});
+
+
+
+// axios({
+//   method: 'get',
+//   url: 'https://jsonplaceholder.typicode.com/users',
+//   data: {
+//     title: 'Article title',
+//     body:  'Article body content',
+//     userId: 1,
+//   }
+// })
+// ;(async () => {
+//   const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+//   if (response.ok) {
+//     const data = await response.json()
+//     console.log(data)
+//   } else {
+//     console.log('error')
+//   }
+// })()
+// ;(() => {
+//   fetch('https://jsonplaceholder.typicode.com/posts')
+//     .then((response) => response.json())
+//     .then((data) => console.log(data))
+// })()
 </script>
 <!-- <script setup> 
 import { onMounted } from "vue";
