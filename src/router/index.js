@@ -13,7 +13,7 @@ const router = createRouter({
           component: () => import('@/views/login/EmailView.vue'),
         },
         {
-          path: "new", // route: /
+          path: "login", // route: /
           component: () => import('@/views/login/NewEmailView.vue'),
         },
         {
