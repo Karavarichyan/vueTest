@@ -13,9 +13,10 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue';
-import { computed } from 'vue';
 import axios from 'axios';
+import { ref, computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const email = ref('');
 const isSuccess = ref(false);
 const errorMessage = ref('');
@@ -35,21 +36,34 @@ async function onCreatePost() {
       if (response.data.length) {
         const user = response.data[0];
         isSuccess.value = true;
-        errorMessage.value = ''; 
+        errorMessage.value = '';
+        //Otp  query
+        console.log(response.data);
+        router.push({ path: "/Otp", query: { user: JSON.stringify(user) } });
+        
+        const additionalData = await getAdditionalData(user.id);
+        
+        router.push({
+          path: "/Otp",
+          query: {
+            user: JSON.stringify(user),
+            additionalData: JSON.stringify(additionalData),
+          },
+        });
       } else {
-        errorMessage.value = 'this email does not exist';
+        errorMessage.value = 'This email address vailid';
       }
     } catch (error) {
-      errorMessage.value = 'this email does not exist in server';
+      errorMessage.value = 'This email address not n serever';
       console.error('error:', error);
     }
   } else {
-    errorMessage.value = 'Incorrect E-Mail Address. Please enter a valid email address';
+    errorMessage.value = 'This email address noe email;';
   }
 }
+async function getAdditionalData(userId) {
+  
+}
 </script>
-
-
-
 
 
