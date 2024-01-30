@@ -1,74 +1,53 @@
 <template>
-    <div class="text-xl w-1/2 ml-28 leading-8 font-medium text-indigo-800 w-350 h-370 py-8">
-      <div>
-        <p>Email input</p>
-        {{ email }}
-      </div>
-      <div>
-        <p>ssss</p>
-        {{ value }}
-      </div>
-      <form @submit.prevent="onCreatePost">
-        <div>
-          <input type="email" v-model="email" placeholder="Enter email" class="outline-0 max-w-sm my-6 border-b-2 border-color: rgb(203 213 225); w-full" />
-        </div>
-        <div class="mt-3">
-          <button type="submit" class="btn btn-primary" :disabled="!isValidEmail">
-            Create Post
-          </button>
-        </div>
-      </form>
+  <div>
+    <input type="email" v-model="email" placeholder="Введите адрес электронной почты" />
+    <button @click="onCreatePost">Создать пост</button>
+    <div v-if="isSuccess">
+      Пользователь найден!
     </div>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-  
-  export default {
-    data() {
-      return {
-        email: '',
-        isSuccess: false,
-      };
-    },
-  
-    computed: {
-      isValidEmail() {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return this.email && emailRegex.test(this.email);
-      },
-    },
-  
-    methods: {
-      onCreatePost() {
-        if (this.isValidEmail) {
-          const enteredEmail = this.email;
-  
-          axios
-            .get('https://jsonplaceholder.typicode.com/users', {
-              params: {
-                email: enteredEmail,
-              },
-            })
-            .then((response) => {
-              
-              const userWithEmail = response.data.find(user => user.email === enteredEmail);
-  
-              if (userWithEmail) {
-                this.isSuccess = true;
-                console.log('Email found in server data:', userWithEmail);
-              } else {
-                console.log('Email not found in server data.');
-              }
-            })
-            .catch(error => {
-              console.error('Error fetching data from server:', error);
-            });
-        } else {
-          console.log('Invalid email. Please enter a valid email address.');
-        }
-      },
-    },
-  };
-  </script>
-  
+    <div v-else-if="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </div>
+</template>
+<script setup>
+import { ref } from 'vue';
+import { computed } from 'vue';
+import axios from 'axios';
+const email = ref('');
+const isSuccess = ref(false);
+const errorMessage = ref('');
+const isValidEmail = computed(() => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return email.value && emailRegex.test(email.value);
+});
+async function onCreatePost() {
+  if (isValidEmail.value) {
+    try {
+      const enteredEmail = email.value;
+      const response = await axios.get('https://jsonplaceholder.typicode.com/users', {
+        params: {
+          email: enteredEmail,
+        },
+      });
+      if (response.data.length) {
+        const user = response.data[0];
+        isSuccess.value = true;
+        errorMessage.value = ''; // Очистить все предыдущие ошибки
+      } else {
+        errorMessage.value = 'Пользователь не найден';
+      }
+    } catch (error) {
+      errorMessage.value = 'Ошибка при получении данных с сервера';
+      console.error('Ошибка:', error);
+    }
+  } else {
+    errorMessage.value = 'Неверный адрес электронной почты. Введите правильный адрес электронной почты.';
+  }
+}
+</script>
+
+
+
+
+

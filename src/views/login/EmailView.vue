@@ -60,13 +60,20 @@ const IstValidation = computed(() => {
 
 onMounted(async () => {
   await axios
-    .post('https://jsonplaceholder.typicode.com/posts')
+  
+    .get('https://jsonplaceholder.typicode.com/users')
     .then(response => {
       email.value = response.data;
     })
-    .catch(error => {
-      console.error("erore no user", error);
-    });
+          // if(response.data.length) {
+          //       const user = response.data[0];
+          //       this.isSuccess = true;
+          // } else {
+                
+          //     }
+    // .catch(error => {
+    //   console.error("erore no user", error);
+    // });
     console.log(email.value);
 });
 
