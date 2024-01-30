@@ -17,6 +17,10 @@ const router = createRouter({
           component: () => import('@/views/login/NewEmailView.vue'),
         },
         {
+          path: "info", // route: /
+          component: () => import('@/views/login/InfoUserViuw.vue'),
+        },
+        {
           path: "otp", // route: /otp
           component: () => import('@/views/login/OtpView.vue'),
         },

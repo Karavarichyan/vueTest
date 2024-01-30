@@ -39,21 +39,22 @@ async function onCreatePost() {
         errorMessage.value = '';
         //Otp  query
         console.log(response.data);
-        router.push({ path: "/Otp", query: { user: JSON.stringify(user) } });
+        router.push({ path: "/info", query: { user: JSON.stringify(user) } });
         
         const additionalData = await getAdditionalData(user.id);
         
         router.push({
-          path: "/Otp",
+          path: "/info",
           query: {
             user: JSON.stringify(user),
             additionalData: JSON.stringify(additionalData),
           },
         });
       } else {
-        errorMessage.value = 'This email address vailid';
+        errorMessage.value = 'This email address  nooo vailid';
       }
-    } catch (error) {
+    } 
+    catch (error) {
       errorMessage.value = 'This email address not n serever';
       console.error('error:', error);
     }
