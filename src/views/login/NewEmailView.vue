@@ -51,7 +51,7 @@ async function onCreatePost() {
           },
         });
       } else {
-        errorMessage.value = 'This email address  nooo vailid';
+        errorMessage.value = 'This email address  not n serever';
       }
     } 
     catch (error) {
@@ -59,7 +59,7 @@ async function onCreatePost() {
       console.error('error:', error);
     }
   } else {
-    errorMessage.value = 'This email address noe email;';
+    errorMessage.value = 'This email address not email;';
   }
 }
 async function getAdditionalData(userId) {
