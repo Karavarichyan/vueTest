@@ -28,14 +28,12 @@
     data() {
       return {
         email: '',
-       
         isSuccess: false,
       };
     },
   
     computed: {
       isValidEmail() {
-        
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return this.email && emailRegex.test(this.email);
       },
@@ -43,24 +41,31 @@
   
     methods: {
       onCreatePost() {
-       
         if (this.isValidEmail) {
           const enteredEmail = this.email;
   
           axios
             .get('https://jsonplaceholder.typicode.com/users', {
-              email: enteredEmail,
+              params: {
+                email: enteredEmail,
+              },
             })
             .then((response) => {
-              this.isSuccess = true;
-              console.log(response);
-              console.log(enteredEmail)
-             
-            //   this.$emit('postcreated');
+              
+              const userWithEmail = response.data.find(user => user.email === enteredEmail);
+  
+              if (userWithEmail) {
+                this.isSuccess = true;
+                console.log('Email found in server data:', userWithEmail);
+              } else {
+                console.log('Email not found in server data.');
+              }
+            })
+            .catch(error => {
+              console.error('Error fetching data from server:', error);
             });
         } else {
           console.log('Invalid email. Please enter a valid email address.');
-         
         }
       },
     },
