@@ -23,15 +23,15 @@
       };
     },
     created() {
-      // Получение строки из параметра запроса
+      
       const userString = this.$route.query.user;
       
-      // Преобразование строки в объект
+      
       this.user = JSON.parse(userString);
     },
     computed: {
       formattedUser() {
-        // Форматирование объекта в виде строки с отступами
+      
         return JSON.stringify(this.user, null, 2);
       }
     }
