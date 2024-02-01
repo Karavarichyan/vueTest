@@ -8,12 +8,16 @@ const router = createRouter({
       path: '/',
       component: () => import('@/layouts/LayoutView.vue'),
       children: [
+        // {
+        //   path: "", // route: /
+        //   component: () => import('@/views/login/EmailView.vue'),
+        // },
+        // {
+        //   path: "login", // route: /
+        //   component: () => import('@/views/login/NewEmailView.vue'),
+        // },
         {
           path: "", // route: /
-          component: () => import('@/views/login/EmailView.vue'),
-        },
-        {
-          path: "login", // route: /
           component: () => import('@/views/login/NewEmailView.vue'),
         },
         // {
