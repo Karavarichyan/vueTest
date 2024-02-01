@@ -5,7 +5,7 @@
     class="h-[40px] my-4 rounded-lg min-w-44 bg-blue-900 items-center text-white ml-[160px] font-roboto"
     >create post</button>
     <div v-if="isSuccess">
-      email vailid !
+      email valid!
     </div>
     <div v-else-if="errorMessage">
       {{ errorMessage }}
@@ -14,7 +14,7 @@
 </template>
 <script setup>
 import axios from 'axios';
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const email = ref('');
@@ -37,34 +37,18 @@ async function onCreatePost() {
         const user = response.data[0];
         isSuccess.value = true;
         errorMessage.value = '';
-        //Otp  query
-        console.log(response.data);
-        router.push({ path: "/info", query: { user: JSON.stringify(user) } });
-        
-        const additionalData = await getAdditionalData(user.id);
-        
-        router.push({
-          path: "/info",
-          query: {
-            user: JSON.stringify(user),
-            additionalData: JSON.stringify(additionalData),
-          },
-        });
+        // 
+        localStorage.setItem('userData', JSON.stringify(user));
+        router.push({ path: "/info" });
       } else {
-        errorMessage.value = 'This email address  not n serever';
+        errorMessage.value = 'This email address is not on the server';
       }
-    } 
-    catch (error) {
-      errorMessage.value = 'This email address not n serever';
+    } catch (error) {
+      errorMessage.value = 'An error occurred while fetching data from the server';
       console.error('error:', error);
     }
   } else {
-    errorMessage.value = 'This email address not email;';
+    errorMessage.value = 'Please enter a valid email address';
   }
 }
-async function getAdditionalData(userId) {
-  
-}
 </script>
-
-
