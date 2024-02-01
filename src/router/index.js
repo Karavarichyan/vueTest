@@ -39,6 +39,10 @@ const router = createRouter({
           component: () => import('@/views/login/InfoUserViuw.vue'),
         },
         {
+          path: "infot", // route: /
+          component: () => import('@/views/login/testInfoUser.vue'),
+        },
+        {
           path: "", // route: /dashboard
           component: () => import('@/views/dashboard/ComingSoonView.vue'),
         },
