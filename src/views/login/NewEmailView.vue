@@ -24,7 +24,17 @@ const isValidEmail = computed(() => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return email.value && emailRegex.test(email.value);
 });
+//if (!email.value.length) return;
+// router.push({ path: "/Otp", replace: true });
 async function onCreatePost() {
+  ///testttt
+
+  // if (!isValidEmail.value) {
+  //   errorMessage.value = 'Please enter a valid email address';
+  //   return;
+  // }
+
+  ///testtt
   if (isValidEmail.value) {
     try {
       const enteredEmail = email.value;
@@ -33,7 +43,7 @@ async function onCreatePost() {
           email: enteredEmail,
         },
       });
-      if (response.data.length) {
+      if (response.data.length) {  
         const user = response.data[0];
         isSuccess.value = true;
         errorMessage.value = '';
@@ -44,8 +54,8 @@ async function onCreatePost() {
         errorMessage.value = 'This email address is not on the server';
       }
     } catch (error) {
-      errorMessage.value = 'An error occurred while fetching data from the server';
-      console.error('error:', error);
+      errorMessage.value = 'error while receiving server data';
+      
     }
   } else {
     errorMessage.value = 'Please enter a valid email address';
