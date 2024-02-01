@@ -16,10 +16,10 @@ const router = createRouter({
           path: "login", // route: /
           component: () => import('@/views/login/NewEmailView.vue'),
         },
-        {
-          path: "info", // route: /
-          component: () => import('@/views/login/InfoUserViuw.vue'),
-        },
+        // {
+        //   path: "info", // route: /
+        //   component: () => import('@/views/login/InfoUserViuw.vue'),
+        // },
         {
           path: "otp", // route: /otp
           component: () => import('@/views/login/OtpView.vue'),
@@ -34,6 +34,10 @@ const router = createRouter({
       path: '/dashboard',
       component: () => import('@/views/dashboard/LayoutView.vue'),
       children: [
+        {
+          path: "info", // route: /
+          component: () => import('@/views/login/InfoUserViuw.vue'),
+        },
         {
           path: "", // route: /dashboard
           component: () => import('@/views/dashboard/ComingSoonView.vue'),

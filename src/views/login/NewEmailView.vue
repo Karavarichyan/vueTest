@@ -49,7 +49,7 @@ async function onCreatePost() {
         errorMessage.value = '';
         // 
         localStorage.setItem('userData', JSON.stringify(user));
-        router.push({ path: "/info" });
+        router.push({ path: "/dashboard/info" });
       } else {
         errorMessage.value = 'This email address is not on the server';
       }
