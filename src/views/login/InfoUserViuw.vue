@@ -217,7 +217,7 @@
       @click="saveChanges"
       class="h-[40px] my-4 rounded-lg min-w-44 bg-blue-900 items-center text-white ml-[160px] font-roboto"
     >
-      SEVE
+      SAVE
     </button>
   </div>
 

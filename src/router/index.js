@@ -54,6 +54,10 @@ const router = createRouter({
             path: "InfoPostOnliU", // route: /
             component: () => import('@/views/dashboard/OnliUserInfoView.vue'),
           },
+          {
+            path: "Intiresting", // route: /
+            component: () => import('@/views/dashboard/intrestingInfo.vue'),
+          },
         // {
         //   path: "infot", // route: / OnliUserInfoView
         //   component: () => import('@/views/login/testInfoUser.vue'),

@@ -1,26 +1,23 @@
 <template>
-  <div class="flex">
-    <!-- Sidebar -->
-    <div class="w-full flex max-w-16 min-h-screen bg-sky-950 p-4">
-      <div>
-        <img class="py-3" src="@/assets/menu1.png" alt="oop" />
-        <!-- <img class="py-3" src="@/assets/menu3.png" alt="oop" /> -->
-        <router-link to="/dashboard/Info">
-            <img class="py-3" src="@/assets/menu3.png" alt="Home Page" />
+    <div class="flex">
+      <div class="w-full max-w-16 min-h-screen bg-sky-950 p-4 fixed">
+        <div class="flex flex-col items-center">
+          <router-link to="/dashboard/Intiresting">
+            <img class="py-3" src="@/assets/menu1.png" alt="Главная страница" />
+          </router-link>
+          <router-link to="/dashboard/Info">
+            <img class="py-3" src="@/assets/menu3.png" alt="Главная страница" />
           </router-link>
           <router-link to="/dashboard/InfoPost">
-            <img class="py-3" src="@/assets/menu2.png" alt="oop" />
+            <img class="py-3" src="@/assets/menu2.png" alt="Что-то еще" />
           </router-link>
-        <!-- <img class="py-3" src="@/assets/menu2.png" alt="oop" /> -->
-        
+        </div>
+      </div>
+  
+      <div class="flex-1 flex items-center justify-center min-w-96">
+        <RouterView />
       </div>
     </div>
+  </template>
 
-    <!-- Main Content -->
-    <div class="flex-1 flex items-center justify-center min-w-96">
-      <RouterView />
-    </div>
-  </div>
-</template>
-<script setup> 
-</script> 
+  
