@@ -39,21 +39,33 @@ const router = createRouter({
       component: () => import('@/views/dashboard/LayoutView.vue'),
       children: [
         {
-          path: "info", // route: /
+          path: "Info", // route: /
           component: () => import('@/views/login/InfoUserViuw.vue'),
         },
         {
-          path: "infot", // route: /
-          component: () => import('@/views/login/testInfoUser.vue'),
-        },
+            path: "InfoPost", // route: /
+            component: () => import('@/views/dashboard/PostUserView.vue'),
+          },
+          {
+            path: "InfoPostAll", // route: /
+            component: () => import('@/views/dashboard/AllUserInfoView.vue'),
+          },
+          {
+            path: "InfoPostOnliU", // route: /
+            component: () => import('@/views/dashboard/OnliUserInfoView.vue'),
+          },
+        // {
+        //   path: "infot", // route: / OnliUserInfoView
+        //   component: () => import('@/views/login/testInfoUser.vue'),
+        // },
         {
           path: "", // route: /dashboard
           component: () => import('@/views/dashboard/ComingSoonView.vue'),
         },
-        {
-          path: "profile", // route: /dashboard/profile
-          component: () => import('@/views/dashboard/ProfileView.vue'),
-        },
+        // {
+        //   path: "profile", // route: /dashboard/profile
+        //   component: () => import('@/views/dashboard/ProfileView.vue'),
+        // },
       ],
     },
   ]
