@@ -14,10 +14,9 @@
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
     const posts = ref([]);
-    onMounted(async () => {
+  onMounted(async () => {
     try {
-      const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-      posts.value = response.data;
+      posts.value = (await axios.get('https://jsonplaceholder.typicode.com/posts')).data;
     } catch (error) {
       console.error('Error fetching posts:', error);
     }

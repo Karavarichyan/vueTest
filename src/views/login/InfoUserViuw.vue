@@ -229,5 +229,4 @@ const saveChanges = () => {
   localStorage.setItem('userData', JSON.stringify(userData.value))
 }
 const userData = ref(JSON.parse(localStorage.getItem('userData')) ?? null)
-console.log(userData)
 </script>

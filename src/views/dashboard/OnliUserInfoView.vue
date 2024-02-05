@@ -10,7 +10,7 @@
     </div>
   </template>
   
-   <script setup>
+<script setup>
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
   
@@ -18,18 +18,14 @@
   
   onMounted(async () => {
     try {
-      
       const user = JSON.parse(localStorage.getItem('userData'));
-  
-     
-      if (user && user.id) {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
-        userPosts.value = response.data;
+      if (user?.id) {
+        userPosts.value = (await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)).data;
       } else {
         console.error('User information not found in id .');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('User information not found in id .', error);
     }
   });
   </script> 
