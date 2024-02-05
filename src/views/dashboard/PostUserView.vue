@@ -21,8 +21,27 @@
           </button>
         </router-link>
       </div>
-      
-      
+      <!-- <div>
+        <button >
+             <AllUserInfoViewCVue/>
+             aaa
+        </button>
+       <button>
+        <OnliUserInfoViewC/>
+        oooo
+       </button>
+        
+      </div> -->
+      <div>
+        <button @click="showAll">
+          <AllUserInfoViewCVue v-if="showAllInfo"/>
+          aaa1
+        </button>
+        <button @click="showOnli">
+          <OnliUserInfoViewC v-if="showOnliInfo"/>
+          oooo1
+        </button>
+      </div>
   
   
     <div class="w-full max-w-md px-2 py-16 sm:px-0">
@@ -96,7 +115,19 @@
   <script setup>
   import { ref } from 'vue'
   import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
-  
+  import AllUserInfoViewCVue from '@/components/AllUserInfoViewC.vue';
+  import OnliUserInfoViewC from '@/components/OnliUserInfoViewC.vue';
+//   const { ref } = Vue;
+  const showAllInfo = ref(false);
+  const showOnliInfo = ref(false);
+  const showAll = () => {
+    showAllInfo.value = true;
+    showOnliInfo.value = false;
+  };
+  const showOnli = () => {
+    showAllInfo.value = false;
+    showOnliInfo.value = true;
+  };
   const categories = ref({
     Recent: [
       {
