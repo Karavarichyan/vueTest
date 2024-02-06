@@ -24,14 +24,14 @@ const router = createRouter({
         //   path: "info", // route: /
         //   component: () => import('@/views/login/InfoUserViuw.vue'),
         // },
-        {
-          path: "otp", // route: /otp
-          component: () => import('@/views/login/OtpView.vue'),
-        },
-        {
-          path: "test", // route: /test
-          component: () => import('@/views/login/TestAxios.vue'),
-        },
+        // {
+        //   path: "otp", // route: /otp
+        //   component: () => import('@/views/login/OtpView.vue'),
+        // },
+        // {
+        //   path: "test", // route: /test
+        //   component: () => import('@/views/login/TestAxios.vue'),
+        // },
       ],
     },
     {
@@ -39,33 +39,33 @@ const router = createRouter({
       component: () => import('@/views/dashboard/LayoutView.vue'),
       children: [
         {
-          path: "Info", // route: /
+          path: "info", // route: /
           component: () => import('@/views/login/InfoUserViuw.vue'),
         },
         {
-            path: "InfoPost", // route: /
+            path: "infoPost", // route: /
             component: () => import('@/views/dashboard/PostUserView.vue'),
           },
+        //   {
+        //     path: "InfoPostAll", // route: /
+        //     component: () => import('@/views/dashboard/AllUserInfoView.vue'),
+        //   },
+        //   {
+        //     path: "InfoPostOnliU", // route: /
+        //     component: () => import('@/views/dashboard/OnliUserInfoView.vue'),
+        //   },
           {
-            path: "InfoPostAll", // route: /
-            component: () => import('@/views/dashboard/AllUserInfoView.vue'),
-          },
-          {
-            path: "InfoPostOnliU", // route: /
-            component: () => import('@/views/dashboard/OnliUserInfoView.vue'),
-          },
-          {
-            path: "Intiresting", // route: /
+            path: "intiresting", // route: /
             component: () => import('@/views/dashboard/intrestingInfo.vue'),
           },
         // {
         //   path: "infot", // route: / OnliUserInfoView
         //   component: () => import('@/views/login/testInfoUser.vue'),
         // },
-        {
-          path: "", // route: /dashboard
-          component: () => import('@/views/dashboard/ComingSoonView.vue'),
-        },
+        // {
+        //   path: "", // route: /dashboard
+        //   component: () => import('@/views/dashboard/ComingSoonView.vue'),
+        // },
         // {
         //   path: "profile", // route: /dashboard/profile
         //   component: () => import('@/views/dashboard/ProfileView.vue'),
