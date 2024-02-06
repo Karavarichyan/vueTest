@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto my-8">
+    <div class="   ml-16 mt-16  container mx-auto my-8">
       <header class="text-center">
         <h1 class="text-4xl font-bold text-gray-800 mb-4">EVISTEP</h1>
         <h2 class="text-4xl font-bold text-gray-800 mb-4">About Us</h2>

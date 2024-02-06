@@ -9,7 +9,7 @@
   </div>
 </template> -->
 <template>
-    <div class="flex space-x-4">
+    <!-- <div class="flex space-x-4">
         <router-link to="/dashboard/InfoPostAll">
           <button class="bg-transparent text-black font-bold py-2 px-4 border-b-2 border-transparent hover:border-gray-500 transition duration-300">
             All
@@ -21,7 +21,7 @@
             Onli User Info
           </button>
         </router-link>
-      </div>
+      </div> -->
       <!-- <div>
         <button >
              <AllUserInfoViewCVue/>
@@ -33,7 +33,7 @@
        </button>
         
       </div> -->
-      <div>
+      <!-- <div>
         <button @click="showAll">
           <AllUserInfoViewCVue v-if="showAllInfo"/>
           aaa1
@@ -42,7 +42,38 @@
           <OnliUserInfoViewC v-if="showOnliInfo"/>
           oooo1
         </button>
+      </div> -->
+      <!-- <div class="flex">
+        <div class="flex space-x-4 fixed">
+          <button @click="showAll" class="bg-transparent text-black font-bold py-2 px-4 border-b-2 border-transparent hover:border-gray-500 transition duration-300">
+            aaall
+          </button>
+          <button @click="showOnli" class="bg-transparent text-black font-bold py-2 px-4 border-b-2 border-transparent hover:border-gray-500 transition duration-300">
+            Onli
+          </button>
+          
+        </div>
+    
+        <div class="flex">
+          <AllUserInfoViewCVue v-if="showAllInfo" />
+          <OnliUserInfoViewC v-if="showOnliInfo" />
+        </div>
+      </div> -->
+      
+      <div class="ml-16 fixed top-0 left-0 right-0 bg-white z-50 flex justify-center space-x-4">
+        <button @click="showAll" class="text-black font-bold py-2 px-4 border-b-2 border-transparent hover:border-gray-500 transition duration-300">
+          aaall
+        </button>
+        <button @click="showOnli" class="text-black font-bold py-2 px-4 border-b-2 border-transparent hover:border-gray-500 transition duration-300">
+          Onli
+        </button>
       </div>
+      <div class=" ml-16 mt-16">
+        <AllUserInfoViewCVue v-if="showAllInfo" />
+        <OnliUserInfoViewC v-if="showOnliInfo" />
+      </div>
+      
+      
   
   
     <!-- <div class="w-full max-w-md px-2 py-16 sm:px-0">
@@ -56,7 +87,7 @@
           >
           
             <button
-              :class="[
+              :=class"[
                 'w-full rounded-lg py-2.5 text-sm font-medium leading-5',
                 'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
                 selected
@@ -115,7 +146,7 @@
   
   <script setup>
   import { ref } from 'vue'
-  import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+//   import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
   import AllUserInfoViewCVue from '@/components/AllUserInfoViewC.vue';
   import OnliUserInfoViewC from '@/components/OnliUserInfoViewC.vue';
 //   const { ref } = Vue;
