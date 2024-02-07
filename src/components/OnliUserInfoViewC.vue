@@ -28,7 +28,5 @@
     }
   };
   const Enyposts = computed(() => userPosts.value);
-  MyUserPosts().then((data) => {
-    userPosts.value = data;
-  });
+  
   </script>
