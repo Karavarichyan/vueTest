@@ -62,7 +62,6 @@ console.log(props.menu)
   };
   
   const handleButtonClick = (item) => {
-    // Обработка нажатия на кнопку меню
     console.log(`Button "${item.label}" clicked`);
     isMenuVisible.value = false;
   };
@@ -222,35 +221,24 @@ for (let i = 2; i <= 8; i++) {
       
   
 </template>
-
 <script setup>
-import { ref, computed } from 'vue';
-const menulist = ref([
-  { label: 'gago', content: ' for gago ' },
+import { ref, computed, defineProps, defineEmits } from 'vue';
 
+const props = defineProps({
+  menulist: Array,
 
-]);
-
-const selectedTabIndex = ref(0);
-
-const selectedTabContent = computed(() => {
-  return menulist.value[selectedTabIndex.value].content;
 });
 
-const addMenuItem = (label, content) => {
-  menulist.value.push({ label, content });
-};
+const emits = defineEmits();
 
+const selectedTabContent = computed(() => {
+  if (props.menulist && props.menulist[props.selectedTabIndex]) {
+    return props.menulist[props.selectedTabIndex].content;
+  }
+  return '';  
+});
 
 const selectTab = (index) => {
-  selectedTabIndex.value = index;
+  emits('update:selectedTabIndex', index);
 };
-addMenuItem('vaxo', ' for vaxo ');
-addMenuItem('vacho', 'for vacho ');
-addMenuItem('alo', ' for blo ');
-addMenuItem('alo', ' for blo ');
-addMenuItem('alo', ' for blo ');
-addMenuItem('alo', ' for blo ');
-
-
 </script>

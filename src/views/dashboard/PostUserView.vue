@@ -27,17 +27,24 @@
         <template v-slot:tabPanel-4> Content 4 </template> 
       </MenuSection>
     </div>-->
-    <div>ssssssssssss</div>
+
     <div>
-      <MenuSection />
+      <MenuSection :menulist="menulist"  />
+      <!-- <button @click="updateMenu">updete</button> -->
     </div>
-    <div>
-        <MenuSection />
-      </div>
+   
   </div>
+
 </template>
 <script setup>
+import { ref } from 'vue'
 import MenuSection from '@/components/MenuSection.vue'
+const menulist = ref([
+  { label: 'alo 1', content: ' for alo   1' },
+  { label: 'blo 1', content: ' for blo   1' },
+ 
+])
+
 
 </script>
 

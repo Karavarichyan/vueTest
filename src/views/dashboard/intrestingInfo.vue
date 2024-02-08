@@ -1,11 +1,13 @@
 <template>
+
+    
     <div class="   ml-16 mt-16  container mx-auto my-8">
       <header class="text-center">
         <h1 class="text-4xl font-bold text-gray-800 mb-4">EVISTEP</h1>
         <h2 class="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
         <p class="text-lg text-gray-600">CHOOSE THE RIGHT DEVELOPMENT PATH WITH EVISTEP</p>
       </header>
-  
+  <MenuSection :menulist="menulist"  />
       <section class="my-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-4">Who We Are</h2>
         <p class="text-gray-700">
@@ -28,3 +30,11 @@
       </footer>
     </div>
   </template>
+  <script setup>
+  import { ref } from 'vue'
+import MenuSection from '@/components/MenuSection.vue'
+const menulist = ref([
+  { label: 'asdfsdfs 1', content: ' for sdfwd   1' },
+ 
+])
+</script>
