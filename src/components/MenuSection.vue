@@ -34,7 +34,7 @@ console.log(props.menu)
   };
   </script> -->
 
-  <!-- Menu.vue -->
+<!-- Menu.vue -->
 <!-- Menu.vue -->
 <!-- <template>
     <div>
@@ -67,7 +67,7 @@ console.log(props.menu)
     isMenuVisible.value = false;
   };
   </script> -->
-  <!-- <template>
+<!-- <template>
     <div>
       <button v-for="button in allButtons" :key="button.id" @click="handleButtonClick(button)">
         {{ button.label }}
@@ -94,7 +94,7 @@ console.log(props.menu)
   ];
   
   const handleButtonClick = (item) => {
-    // Обработка нажатия на кнопку
+    
     console.log(`Button "${item.label}" clicked`);
     if (item.id === 0) {
       isMenuVisible.value = !isMenuVisible.value;
@@ -108,56 +108,149 @@ console.log(props.menu)
   };
   </script> -->
 
-  <template>
-    <div
+<!-- <template>
+  <div
+    :class="{
+      flex: variant === 'horizontal'
+    }"
+  >
+    <ul
       :class="{
-        flex: variant === 'horizontal',
+        flex: variant === 'vertical'
       }"
     >
-      <ul
-        :class="{
-          flex: variant === 'vertical',
-        }"
-      >
-        <li v-for="(tab, index) in tabList" :key="index">
-          <label :for="`${_uid}${index}`" v-text="tab" />
-          <input
-            :id="`${_uid}${index}`"
-            type="radio"
-            :name="`${_uid}-tab`"
-            :value="index + 1"
-            v-model="activeTab"
-          />
-        </li>
-      </ul>
-  
-      <template v-for="(tab, index) in tabList">
-        <div :key="index" v-if="index + 1 === activeTab">
-          <slot :name="`tabPanel-${index + 1}`" />
+      <li v-for="(tab, index) in tabList" :key="index">
+        <label :for="`${_uid}${index}`" v-text="tab" />
+        <input
+          :id="`${_uid}${index}`"
+          type="radio"
+          :name="`${_uid}-tab`"
+          :value="index + 1"
+          v-model="activeTab"
+        />
+      </li>
+      <button
+        :id="`${_uid}${index}`"
+        type="submit"
+        :name="`${_uid}-tab`"
+        :value="index + 1"
+        
+      >seve</button>
+    </ul>
+
+    <template v-for="(tab, index) in tabList">
+      <div :key="index" v-if="index + 1 === activeTab">
+        <slot :name="`tabPanel-${index + 1}`" />
+      </div>
+    </template>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    tabList: {
+      type: Array,
+      required: true
+    },
+    variant: {
+      type: String,
+      required: false,
+      default: () => 'vertical',
+      validator: (value) => ['horizontal', 'vertical'].includes(value)
+    }
+  },
+  data() {
+    return {
+      activeTab: 1
+    }
+  }
+}
+</script> -->
+
+<!-- <template>
+    <div>
+        <div v-for="(tab, index) in tabs" :key="index" @click="selectTab(index)" :class="{ 'bg-blue-500': index === selectedTabIndex, 'text-white': index === selectedTabIndex }" class="px-4 py-2 cursor-pointer inline-block border border-gray-300 rounded-tl rounded-tr">
+          {{ tab.label }}
         </div>
-      </template>
-    </div>
+        <div class="tab-content mt-4">
+          {{ selectedTabContent }}
+        </div>
+      </div>
   </template>
   
-  <script>
-  export default {
-    props: {
-      tabList: {
-        type: Array,
-        required: true,
-      },
-      variant: {
-        type: String,
-        required: false,
-        default: () => "vertical",
-        validator: (value) => ["horizontal", "vertical"].includes(value),
-      },
-    },
-    data() {
-      return {
-        activeTab: 1,
-      };
-    },
-  };
+  <script setup>
+import { ref, computed } from 'vue';
+
+const selectedTabIndex = ref(0);
+
+const tabs = ref([
+  { label: 'tab 1', content: 'this is frst' },
+
+]);
+
+const selectedTabContent = computed(() => {
+  return tabs.value.length > 0 ? tabs.value[selectedTabIndex.value].content : '';
+});
+
+const selectTab = (index) => {
+  selectedTabIndex.value = index;
+};
+
+for (let i = 2; i <= 8; i++) {
+  tabs.value.push({ label: `tab ${i}`, content: `menu ${i}` });
+}
   </script>
+   -->
+<template>
+    <!-- <div>
+        <div v-for="(tab, index) in tabs" :key="index" @click="selectTab(index)" :class="{ 'bg-blue-500': index === selectedTabIndex, 'text-white': index === selectedTabIndex }" class="px-4 py-2 cursor-pointer inline-block border border-gray-300 rounded-tl rounded-tr">
+          {{ tab.label }}
+        </div>
+        <div class="tab-content mt-4">
+          {{ selectedTabContent }}
+        </div>
+      </div>      -->
+      <div>
+        <div v-for="(tab, index) in menulist" :key="index" @click="selectTab(index)" :class="{ 'bg-blue-500': index === selectedTabIndex, 'text-white': index === selectedTabIndex }" class="px-4 py-2 cursor-pointer inline-block border border-gray-300 rounded-tl rounded-tr">
+          {{ tab.label }}
+        </div>
+        <div class="tab-content mt-4">
+          {{ selectedTabContent }}
+        </div>
+      </div>
+      
   
+</template>
+
+<script setup>
+import { ref, computed } from 'vue';
+const menulist = ref([
+  { label: 'gago', content: ' for gago ' },
+
+
+]);
+
+const selectedTabIndex = ref(0);
+
+const selectedTabContent = computed(() => {
+  return menulist.value[selectedTabIndex.value].content;
+});
+
+const addMenuItem = (label, content) => {
+  menulist.value.push({ label, content });
+};
+
+
+const selectTab = (index) => {
+  selectedTabIndex.value = index;
+};
+addMenuItem('vaxo', ' for vaxo ');
+addMenuItem('vacho', 'for vacho ');
+addMenuItem('alo', ' for blo ');
+addMenuItem('alo', ' for blo ');
+addMenuItem('alo', ' for blo ');
+addMenuItem('alo', ' for blo ');
+
+
+</script>

@@ -14,36 +14,33 @@
     </button> -->
 
     <!-- <h1>Component Prop Demo</h1> -->
-	<!-- <MenuSection menu="++++I am  component " /> -->
+    <!-- <MenuSection menu="++++I am  component " /> -->
     <!-- <div>
         <MenuSection buttonLabel="Show Menu" :menuItems="menuItems" />
       </div> -->
 
-      <div>
-        <MenuSection :tabList="tabList">
-          <template v-slot:tabPanel-1> Content 1 </template>
-          <template v-slot:tabPanel-2> Content 2 </template>
-          <template v-slot:tabPanel-3> Content 3 </template>
-          <template v-slot:tabPanel-4> Content 4 </template>
-        </MenuSection>
+    <!-- <div>
+      <MenuSection :tabList="tabList">
+        <template v-slot:tabPanel-1> Content 1 </template>
+        <template v-slot:tabPanel-2> Content 2 </template>
+         <template v-slot:tabPanel-3> Content 3 </template>
+        <template v-slot:tabPanel-4> Content 4 </template> 
+      </MenuSection>
+    </div>-->
+    <div>ssssssssssss</div>
+    <div>
+      <MenuSection />
+    </div>
+    <div>
+        <MenuSection />
       </div>
   </div>
 </template>
-<script>
-import MenuSection from '@/components/MenuSection.vue';
+<script setup>
+import MenuSection from '@/components/MenuSection.vue'
 
-export default {
-  components: {
-    MenuSection,
-  },
-  
-  data() {
-    return {
-      tabList: ["Tab 1", "Tab 2", "Tab 3", "Tab 4"],
-    };
-  },
-};
 </script>
+
 <!-- 
 <script setup>
 import { ref } from 'vue'
@@ -59,4 +56,3 @@ for (let i = 1; i <= 10; i++) {
 }
 // import { ref } from 'vue';
 </script> -->
-
