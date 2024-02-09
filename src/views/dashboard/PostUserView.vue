@@ -15,66 +15,66 @@
        
     <!-- <div>
       <MenuSection :menulist="menulist" />
+    </div> -->
+    <!-- <div>
+        <MenuSection
+        :items="menuItem"
+        :active-item="activTab"
+        @click="selectCurrenTab"
+        />
+        <div v-if="activTab ==='All'">
+            1
+        </div>
+        <div v-else-if="activTab ==='Onli'">2
+        </div>
+
     </div>
-  </div>
-</template>
-<script setup>
+  </div> -->
+<!-- </template> -->
+<!-- <script setup>
 import { ref } from 'vue'
 import MenuSection from '@/components/MenuSection.vue'
-const menulist = ref([
-  { label: 'alo 1', content: ' for alo   1' },
-  { label: 'blo 1', content: ' for blo   1' }
-])
+// const menulist = ref([
+//   { label: 'alo 1', content: ' for alo   1' },
+//   { label: 'blo 1', content: ' for blo   1' }
+// ])
+// activTab: ['All']
+// menuItem: ['All','Onli']
 </script> -->
-<!-- <script setup>
-import TabsWrapper from '@/components/TabsWrapper.vue'
-import TabItem from '@/components/TabItem.vue'
-</script>
-
-<template>
-    <TabsWrapper>
-        <TabItem title="Tab 1">Content from Tab 1</TabItem>
-        <TabItem title="Tab 2">Content from Tab 2 Lorem ipsum dolor sit amet.</TabItem>
-        <TabItem title="Tab 3">Content from Tab 3 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates, ipsa.</TabItem>
-        <TabItem title="Tab 4">Content from Tab 4 Lorem ipsum dolor sit amet.</TabItem>
-        <TabItem title="Tab 5">Content from Tab 5 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora maiores ab minima. Facere mollitia tempora soluta, commodi beatae sit. Distinctio.</TabItem>
-        <TabItem title="Tab 6">Content from Tab 6</TabItem>
-    </TabsWrapper>
-</template> -->
-
 <template>
     <div>
-        <MenuSection>
-
-        </MenuSection>
-      <div
-        v-for="(item, index) in menulist"
-        :key="index"
-        @click="activateItem(index)"
-        :class="{
-          'text-black font-bold py-2 px-4 border-b-2': index === activeIndex,
-          'border-transparent hover:border-gray-500 transition duration-300': index !== activeIndex,
-          'px-4 py-2 cursor-pointer inline-block': true
-        }"
-      >
-        {{ item.label }}
-      </div>
-      <div class="tab-content mt-4">
-        <p v-if="activeIndex === 0">hiii</p>
-        <p v-else-if="activeIndex === 1">Hello</p>
         
+      <MenuSection :items="menuItems" :active-item="activeTab" @click="selectCurrentTab" />
+      <div ursor-pointe v-if="activeTab === 'ALL'">
+        <span cursor-pointe @click="test">ALL </span>
+        <span cursor-pointer @click="testt"> ONLY</span>
       </div>
+      
+      <div class="my-1.5" v-else-if="activeTab === 'ONLI'">
+        <AllUserInfoViewC/>
+      </div>
+      <div class="my-1.5" v-else-if="activeTab === 'ONLI USER'">
+        <OnliUserInfoViewC/>
+      </div>
+      
+      
     </div>
   </template>
   <script setup>
-  import { ref } from 'vue'
   import MenuSection from '@/components/MenuSection.vue'
-  const menulist = ref([
-    { label: 'alo 1', content: 'content for alo 1' },
-    { label: 'blo 1', content: 'content for blo 1' }
-  ])
-  const activeIndex = ref(0)
-  const activateItem = (index) => {
-    activeIndex.value = index
+  import AllUserInfoViewC from '@/components/AllUserInfoViewC.vue';
+  import OnliUserInfoViewC from '@/components/OnliUserInfoViewC.vue';
+  import { ref } from 'vue';
+  const activeTab = ref('ALL');
+  const menuItems = ['ALL', 'ONLI', 'ONLI USER'];
+  function test() {
+    activeTab.value = 'ONLI';
+  }
+  function testt() {
+    activeTab.value = 'ONLI USER';
+  }
+  
+  function selectCurrentTab(data) {
+    activeTab.value = data;
   }
   </script>
