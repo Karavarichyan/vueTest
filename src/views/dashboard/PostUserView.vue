@@ -17,8 +17,15 @@
       <MenuSection :menulist="menulist" />
     </div>
   </div>
-</template> -->
-
+</template>
+<script setup>
+import { ref } from 'vue'
+import MenuSection from '@/components/MenuSection.vue'
+const menulist = ref([
+  { label: 'alo 1', content: ' for alo   1' },
+  { label: 'blo 1', content: ' for blo   1' }
+])
+</script> -->
 <!-- <script setup>
 import TabsWrapper from '@/components/TabsWrapper.vue'
 import TabItem from '@/components/TabItem.vue'
@@ -37,9 +44,9 @@ import TabItem from '@/components/TabItem.vue'
 
 <template>
     <div>
-        <MenuSection/>
+        <MenuSection>
 
-        
+        </MenuSection>
       <div
         v-for="(item, index) in menulist"
         :key="index"
