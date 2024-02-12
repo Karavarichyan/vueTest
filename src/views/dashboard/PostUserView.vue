@@ -41,7 +41,7 @@ import MenuSection from '@/components/MenuSection.vue'
 // activTab: ['All']
 // menuItem: ['All','Onli']
 </script> -->
-<template>
+<!-- <template>
     <div>
         
       <MenuSection :items="menuItems" :active-item="activeTab" @click="selectCurrentTab" />
@@ -60,21 +60,44 @@ import MenuSection from '@/components/MenuSection.vue'
       
     </div>
   </template>
-  <script setup>
-  import MenuSection from '@/components/MenuSection.vue'
-  import AllUserInfoViewC from '@/components/AllUserInfoViewC.vue';
-  import OnliUserInfoViewC from '@/components/OnliUserInfoViewC.vue';
-  import { ref } from 'vue';
-  const activeTab = ref('ALL');
-  const menuItems = ['ALL', 'ONLI', 'ONLI USER'];
-  function test() {
-    activeTab.value = 'ONLI';
-  }
-  function testt() {
-    activeTab.value = 'ONLI USER';
-  }
+  <script setup> -->
+  <!-- import MenuSection from '@/components/MenuSection.vue'
+//   import AllUserInfoViewC from '@/components/AllUserInfoViewC.vue';
+//   import OnliUserInfoViewC from '@/components/OnliUserInfoViewC.vue';
+//   import { ref } from 'vue';
+//   const activeTab = ref('ALL');
+//   const menuItems = ['ALL', 'ONLI', 'ONLI USER'];
+//   function test() {
+//     activeTab.value = 'ONLI';
+//   }
+//   function testt() {
+//     activeTab.value = 'ONLI USER';
+//   }
   
-  function selectCurrentTab(data) {
-    activeTab.value = data;
-  }
+//   function selectCurrentTab(data) {
+//     activeTab.value = data;
+//   }
+//   </script>-->
+<template> 
+    <div>
+      <MenuSectionVue :items="menuItems" :active-item="activeTab" @click="updateActiveTab" />
+      <div class="content">
+        <template v-if="activeTab === 'Alo'">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </template>
+        <template v-else-if="activeTab === 'Blo'">
+          <h1 class="text-blue-500">materal</h1>
+          <p>ura!</p>
+        </template>
+      </div>
+    </div>
+  </template>
+  <script setup>
+  import { ref } from 'vue';
+  import MenuSectionVue from '@/components/MenuSection.vue'
+  const activeTab = ref('Alo');
+  const menuItems = ['Alo', 'Blo', 'mek'];
+  const updateActiveTab = (item) => {
+    activeTab.value = item;
+  };
   </script>

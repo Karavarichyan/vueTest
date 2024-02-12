@@ -1,6 +1,6 @@
 <template>
     <div class="flex">
-      <div class="w-full max-w-16 min-h-screen bg-sky-950 p-4 fixed">
+      <div class="w-full max-w-16 min-h-screen bg-sky-950 p-4 sticky	">
         <div class="flex flex-col items-center">
           <router-link to="/dashboard/intiresting">
             <img class="py-3" src="@/assets/menu1.png" alt="-" />
