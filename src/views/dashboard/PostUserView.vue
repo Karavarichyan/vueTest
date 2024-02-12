@@ -1,22 +1,22 @@
 <!-- <template>
   <div class="ml-16 fixed top-0 left-0 right-0 bg-white z-50 flex justify-center space-x-4"> -->
-    <!-- <button
+<!-- <button
       @click="showAll"
       class="text-black font-bold py-2 px-4 border-b-2 border-transparent hover:border-gray-500 transition duration-300"
     >
       aaall
     </button> -->
-    <!-- <button
+<!-- <button
       @click="showOnli"
       class="text-black font-bold py-2 px-4 border-b-2 border-transparent hover:border-gray-500 transition duration-300"
     >
       Onli
     </button> -->
-       
-    <!-- <div>
+
+<!-- <div>
       <MenuSection :menulist="menulist" />
     </div> -->
-    <!-- <div>
+<!-- <div>
         <MenuSection
         :items="menuItem"
         :active-item="activTab"
@@ -61,7 +61,7 @@ import MenuSection from '@/components/MenuSection.vue'
     </div>
   </template>
   <script setup> -->
-  <!-- import MenuSection from '@/components/MenuSection.vue'
+<!-- import MenuSection from '@/components/MenuSection.vue'
 //   import AllUserInfoViewC from '@/components/AllUserInfoViewC.vue';
 //   import OnliUserInfoViewC from '@/components/OnliUserInfoViewC.vue';
 //   import { ref } from 'vue';
@@ -78,7 +78,7 @@ import MenuSection from '@/components/MenuSection.vue'
 //     activeTab.value = data;
 //   }
 //   </script>-->
-<template> 
+<!-- <template> 
     <div>
       <MenuSectionVue :items="menuItems" :active-item="activeTab" @click="updateActiveTab" />
       <div class="content">
@@ -100,4 +100,36 @@ import MenuSection from '@/components/MenuSection.vue'
   const updateActiveTab = (item) => {
     activeTab.value = item;
   };
+  </script> -->
+
+
+<template>
+    <div class="flex flex-col">
+      <div class="w-full border-b border-gray-200 p-4 flex justify-between">
+        <MenuSectionVue
+          :names="tabs"
+          :selectedTab="selectedTab"
+          @changeTab="changeTab"
+        />
+      </div>
+      <div class="p-6">
+        <div class="my-6" v-if="selectedTab === 'All'"><br>This is information for All users. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, a?</div>
+        <div class="my-6" v-if="selectedTab === 'Only'"><br>This is information for Only users Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, voluptatem..</div>
+        <div class="my-6" v-if="selectedTab === 'React'"><br>This is information for React users Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum aspernatur provident consectetur recusandae iure quas!.</div>
+      </div>
+    </div>
+  </template>
+  <script setup>
+  import { ref } from 'vue'
+  import MenuSectionVue from '@/components/MenuSection.vue'
+  const tabs = [
+    { name: 'All', label: 'All Users' },
+    { name: 'Only', label: ' Only' },
+    { name: 'React', label: ' React' }
+  ]
+  const selectedTab = ref('All')
+  
+  const changeTab = (tabName) => {
+    selectedTab.value = tabName
+  }
   </script>
